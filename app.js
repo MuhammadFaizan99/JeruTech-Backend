@@ -10,8 +10,12 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send("JeruTech Backend API is running");
+app.get(["/", "/api"], (req, res) => {
+  res.json({
+    success: true,
+    message: "JeruTech Backend API is running",
+    docs: "/api/products",
+  });
 });
 
 app.use("/api", routes);
